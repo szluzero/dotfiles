@@ -90,7 +90,7 @@ alias scp="bundle exec rake shop_management:store_copy"
 alias editzsh="code ~/.zshrc"
 alias dtsc="dev test spec/jobs/shop_management/store_copy spec/operations/shop_management/store_copy"
 alias dsra="dev style ruby -A"
-alias sur="spin up realtime,argus-server,iris --no-snapshots --wait --name"
+alias sui="spin up realtime,argus-server,iris --no-snapshots --wait --name"
 alias quit="exit"
 # This will set your window title
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
