@@ -1,11 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jordanverasamy/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="ys"
+ZSH_THEME="alephnaut-gnzh"
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
@@ -50,8 +50,7 @@ plugins=(
   bundler
   rake
   brew
-  osx
-  zsh-syntax-highlighting
+  macos
 )
 MAILCHECK=0
 source $ZSH/oh-my-zsh.sh
@@ -90,6 +89,7 @@ alias branches='git for-each-ref --sort=-committerdate refs/heads/ --format='\''
 alias scp="bundle exec rake shop_management:store_copy"
 alias editzsh="code ~/.zshrc"
 alias dtsc="dev test spec/jobs/shop_management/store_copy spec/operations/shop_management/store_copy"
+alias dsra="dev style ruby -A"
 # This will set your window title
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 # source ~/.iterm2_shell_integration.basename $SHELL
@@ -104,6 +104,10 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export NIX_PATH="nixpkgs=${HOME}/.nix-defexpr/channels/nixpkgs:${HOME}/.nix-defexpr/channels"
-if [ -e /Users/jordanverasamy/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jordanverasamy/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installersource /Users/jordanverasamy/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installersource ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-source /Users/jordanverasamy/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
+
+[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
