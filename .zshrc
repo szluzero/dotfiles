@@ -106,8 +106,8 @@ export PATH="/usr/local/bin:$PATH"
 export NIX_PATH="nixpkgs=${HOME}/.nix-defexpr/channels/nixpkgs:${HOME}/.nix-defexpr/channels"
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installersource ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 [[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
 
 [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
