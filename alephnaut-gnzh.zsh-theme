@@ -24,13 +24,18 @@ else
   PR_HOST='%F{green}%M%f' # no SSH
 fi
 
+local CURRENT_DIR
+
+if [ "$SPIN" ]; then
+  CURRENT_DIR="(spin) %B%F{blue}%~%f%b"
+else
+  CURRENT_DIR="%B%F{blue}%~%f%b"
+fi
 
 local return_code="%(?..%F{red}%? ↵%f)"
-
-local current_dir="%B%F{blue}%~%f%b"
 local git_branch='$(git_prompt_info)'
 
-PROMPT="╭─${current_dir} \$(ruby_prompt_info) ${git_branch}
+PROMPT="╭─${CURRENT_DIR} \$(ruby_prompt_info) ${git_branch}
 ╰─$PR_PROMPT "
 RPROMPT="${return_code}"
 
