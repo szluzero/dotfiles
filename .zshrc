@@ -82,16 +82,14 @@ alias gpnv="git push --no-verify"
 alias dt="dev test"
 alias ssh-magento="ssh -i ~/.ssh/id_rsa j.verasamy@35.231.102.88"
 alias be="bundle exec"
-alias rra="rerun -x --dir app,spec -- bundle exec rspec"
 alias src="source ~/.zshrc"
 alias b='git for-each-ref --sort=-committerdate refs/heads/ --format='\''%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'\'' --count=15'
 alias branches='git for-each-ref --sort=-committerdate refs/heads/ --format='\''%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'\'
-alias scp="bundle exec rake shop_management:store_copy"
 alias editzsh="code ~/.zshrc"
 alias dtsc="dev test spec/jobs/shop_management/store_copy spec/operations/shop_management/store_copy"
 alias dsra="dev style ruby -A"
-alias sui="spin up realtime,argus-server,iris --no-snapshots --wait --name"
 alias quit="exit"
+alias spinlogs="journalctl -fu"
 # This will set your window title
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 # source ~/.iterm2_shell_integration.basename $SHELL
