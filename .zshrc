@@ -90,6 +90,7 @@ alias dtsc="dev test spec/jobs/shop_management/store_copy spec/operations/shop_m
 alias dsra="dev style ruby -A"
 alias quit="exit"
 alias spinlogs="journalctl -fu"
+alias gpmar="git checkout main; git pull; git checkout -; git rebase main"
 # This will set your window title
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 # source ~/.iterm2_shell_integration.basename $SHELL
