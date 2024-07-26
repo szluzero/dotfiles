@@ -73,24 +73,38 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run alias.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias sc="shopify-cli console"
-alias gcarm="git commit --amend --reuse-message=HEAD"
-alias gpnv="git push --no-verify"
-alias dt="dev test"
-alias ssh-magento="ssh -i ~/.ssh/id_rsa j.verasamy@35.231.102.88"
-alias be="bundle exec"
-alias src="source ~/.zshrc"
-alias b='git for-each-ref --sort=-committerdate refs/heads/ --format='\''%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'\'' --count=15'
-alias branches='git for-each-ref --sort=-committerdate refs/heads/ --format='\''%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'\'
-alias editzsh="code ~/.zshrc"
-alias dtsc="dev test spec/jobs/shop_management/store_copy spec/operations/shop_management/store_copy"
-alias dsra="dev style ruby -A"
-alias quit="exit"
-alias spinlogs="journalctl -fu"
-alias gpmar="git checkout main; git pull; git checkout -; git rebase main"
+
+alias git='noglob git_alias'
+alias git_alias='nocorrect git'
+
+function git_alias() {
+    case "$1" in
+        co)
+            shift  # Remove the first argument ('co')
+            command git checkout "$@"
+            ;;
+        ca)
+            shift  # Remove the first argument ('ca')
+            command git commit --amend --no-edit
+            ;;
+        c)
+            shift  # Remove the first argument ('c')
+            command git commit -m "$@"
+            ;;
+        s)
+            command git status
+            ;;
+        p)
+            shift  # Remove the first argument ('p')
+            # Get the current branch name
+            local branch=$(git symbolic-ref --short HEAD)
+            command git push origin "$branch" "$@"
+            ;;
+        *)
+            command git "$@"
+            ;;
+    esac
+}
 # This will set your window title
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 # source ~/.iterm2_shell_integration.basename $SHELL
